@@ -8,7 +8,8 @@ beforeEach(() => {
 })
 
 const LANGS = ['css', 'sass', 'scss', 'less', 'styl', 'stylus']
-const extractLoaderPath = require('mini-css-extract-plugin').loader
+const { rspack: webpack } = require('@rspack/core')
+const extractLoaderPath = webpack.CssExtractRspackPlugin.loader
 
 const LOADERS = {
   css: 'css',

@@ -3,7 +3,7 @@ const path = require('path')
 /** @type {import('@vue/cli-service').ServicePlugin} */
 module.exports = (api, options) => {
   const cwd = api.getCwd()
-  const webpack = require('webpack')
+  const { rspack: webpack } = require('@rspack/core')
   const vueMajor = require('../util/getVueMajor')(cwd)
 
   api.chainWebpack(webpackConfig => {

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const { chalk, semver, loadModule } = require('@vue/cli-shared-utils')
 const isAbsoluteUrl = require('../util/isAbsoluteUrl')
-
+const { rspack: webpack } = require('@rspack/core')
 const findExisting = (context, files) => {
   for (const file of files) {
     if (fs.existsSync(path.join(context, file))) {
@@ -119,7 +119,7 @@ module.exports = (api, rootOptions) => {
         if (shouldExtract) {
           rule
             .use('extract-css-loader')
-            .loader(require('mini-css-extract-plugin').loader)
+            .loader(webpack.CssExtractRspackPlugin.loader)
             .options({
               publicPath: cssPublicPath
             })
@@ -220,12 +220,12 @@ module.exports = (api, rootOptions) => {
     if (shouldExtract) {
       webpackConfig
         .plugin('extract-css')
-          .use(require('mini-css-extract-plugin'), [extractOptions])
+          .use(webpack.CssExtractRspackPlugin, [extractOptions])
 
       // minify extracted CSS
       webpackConfig.optimization
         .minimizer('css')
-          .use(require('css-minimizer-webpack-plugin'), [{
+          .use(webpack.LightningCssMinimizerRspackPlugin, [{
             parallel: rootOptions.parallel,
             minimizerOptions: cssnanoOptions
           }])

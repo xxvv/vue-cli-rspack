@@ -37,7 +37,7 @@ module.exports = (api, { entry, name, formats, filename, 'inline-vue': inlineVue
     const targets = browserslist(undefined, { path: fullEntryPath })
     const supportsIE = targets.some(agent => agent.includes('ie'))
 
-    const webpack = require('webpack')
+    const webpack = require('@rspack/core')
     config.plugin('need-current-script-polyfill')
       .use(webpack.DefinePlugin, [{
         'process.env.NEED_CURRENTSCRIPT_POLYFILL': JSON.stringify(supportsIE)

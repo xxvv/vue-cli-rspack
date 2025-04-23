@@ -240,7 +240,7 @@ module.exports = (api, options) => {
 
     // copy static assets in public/
     const publicDir = api.resolve('public')
-    const CopyWebpackPlugin = require('copy-webpack-plugin')
+    const CopyWebpackPlugin = require('@rspack/core').rspack.CopyRspackPlugin
     const PlaceholderPlugin = class PlaceholderPlugin { apply () {} }
 
     const copyOptions = {

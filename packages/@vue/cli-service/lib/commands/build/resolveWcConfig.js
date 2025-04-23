@@ -13,7 +13,7 @@ module.exports = (api, { target, entry, name, 'inline-vue': inlineVue }) => {
   }
 
   const cwd = api.getCwd()
-  const webpack = require('webpack')
+  const webpack = require('@rspack/core')
   const vueMajor = require('../../util/getVueMajor')(cwd)
   if (vueMajor === 3) {
     abort(`Vue 3 support of the web component target is still under development.`)

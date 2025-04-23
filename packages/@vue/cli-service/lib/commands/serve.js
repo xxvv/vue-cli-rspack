@@ -39,8 +39,8 @@ module.exports = (api, options) => {
     const isProduction = process.env.NODE_ENV === 'production'
 
     const { chalk } = require('@vue/cli-shared-utils')
-    const webpack = require('webpack')
-    const WebpackDevServer = require('webpack-dev-server')
+    const { rspack: webpack } = require('@rspack/core')
+    const { RspackDevServer: WebpackDevServer } = require('@rspack/dev-server')
     const portfinder = require('portfinder')
     const prepareURLs = require('../util/prepareURLs')
     const prepareProxy = require('../util/prepareProxy')

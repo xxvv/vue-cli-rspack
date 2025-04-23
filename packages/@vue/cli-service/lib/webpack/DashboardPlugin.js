@@ -6,7 +6,7 @@
 
 const path = require('path')
 const fs = require('fs-extra')
-const webpack = require('webpack')
+const { rspack: webpack } = require('@rspack/core')
 const { IpcMessenger } = require('@vue/cli-shared-utils')
 const { analyzeBundle } = require('./analyzeBundle')
 
